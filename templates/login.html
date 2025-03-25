@@ -23,7 +23,7 @@
 
        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #103cbe;">
            <div class="featured-image mb-3">
-            <img src="image/posto-removebg-preview.png" class="img-fluid" style="width: 250px;">
+            <img src="static/image/posto-removebg-preview.png" class="img-fluid" style="width: 250px;">
            </div>
            <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Mantenha-se em dia</p>
            <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Registre seu abastecimento agora mesmo!</small>
@@ -37,20 +37,22 @@
                      <h2>Olá, novamente</h2>
                      <p>Estamos felizes em ter você de volta.</p>
                 </div>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Nome Completo">
-                </div>
-                <div class="input-group mb-1">
-                    <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Senha">
-                </div>
+                <form action="{{ url_for('do_login') }}" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Nome Completo" required>
+                    </div>
+                    <div class="input-group mb-1">
+                        <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Senha" required>
+                    </div>
                 <div class="input-group mb-5 d-flex justify-content-between">
                     <div class="forgot">
                         <small><a href="#">Esqueceu a senha?</a></small>
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-primary w-100 fs-6">Login</button>
+                    <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
                 </div>
+            </form>
                 <div class="row">
                     <small>Não tem conta? <a href="https://wa.me/5511915551648" target="_blank">Entre em contato com o Raul</a></small>
                 </div>
@@ -60,15 +62,5 @@
       </div>
     </div>
 
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const loginButton = document.querySelector(".btn-primary");
-    
-            loginButton.addEventListener("click", function () {
-                window.location.href = "index.html";
-            });
-        });
-    </script>
 </body>
 </html>
