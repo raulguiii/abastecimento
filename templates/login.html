@@ -13,53 +13,61 @@
 
     <!----------------------- Main Container -------------------------->
 
-     <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
 
-    <!----------------------- Login Container -------------------------->
+        <!----------------------- Login Container -------------------------->
 
-       <div class="row border rounded-5 p-3 bg-white shadow box-area">
+        <div class="row border rounded-5 p-3 bg-white shadow box-area">
 
-    <!--------------------------- Left Box ----------------------------->
+            <!--------------------------- Left Box ----------------------------->
 
-       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #103cbe;">
-           <div class="featured-image mb-3">
-            <img src="static/image/posto-removebg-preview.png" class="img-fluid" style="width: 250px;">
-           </div>
-           <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Mantenha-se em dia</p>
-           <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Registre seu abastecimento agora mesmo!</small>
-       </div> 
-
-    <!-------------------- ------ Right Box ---------------------------->
-        
-       <div class="col-md-6 right-box">
-          <div class="row align-items-center">
-                <div class="header-text mb-4">
-                     <h2>Olá, novamente</h2>
-                     <p>Estamos felizes em ter você de volta.</p>
+            <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #103cbe;">
+                <div class="featured-image mb-3">
+                    <img src="static/image/posto-removebg-preview.png" class="img-fluid" style="width: 250px;">
                 </div>
-                <form action="{{ url_for('do_login') }}" method="post">
+                <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Mantenha-se em dia</p>
+                <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Registre seu abastecimento agora mesmo!</small>
+            </div> 
+
+            <!-------------------- ------ Right Box ---------------------------->
+            <div class="col-md-6 right-box">
+                <div class="row align-items-center">
+                    <div class="header-text mb-4">
+                        <h2>Olá, novamente</h2>
+                        <p>Estamos felizes em ter você de volta.</p>
+                    </div>
+
+                    <!-- Exibir alerta de erro se houver mensagem de erro -->
+                    {% if error_message %}
+                    <div class="alert alert-danger alert-sm" role="alert">
+                        {{ error_message }}
+                    </div>
+                    {% endif %}
+
+
+                    <form action="{{ url_for('do_login') }}" method="post">
+                        <div class="input-group mb-3">
+                            <input type="text" name="nome_completo" class="form-control form-control-lg bg-light fs-6" placeholder="Nome Completo" required>
+                        </div>
+                        <div class="input-group mb-1">
+                            <input type="password" name="senha" class="form-control form-control-lg bg-light fs-6" placeholder="Senha" required>
+                        </div>
+                    <div class="input-group mb-5 d-flex justify-content-between">
+                        <div class="forgot">
+                            <small><a href="#">Esqueceu a senha?</a></small>
+                        </div>
+                    </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Nome Completo" required>
+                        <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
                     </div>
-                    <div class="input-group mb-1">
-                        <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Senha" required>
-                    </div>
-                <div class="input-group mb-5 d-flex justify-content-between">
-                    <div class="forgot">
-                        <small><a href="#">Esqueceu a senha?</a></small>
+                </form>
+                    <div class="row">
+                        <small>Não tem conta? <a href="https://wa.me/5511915551648" target="_blank">Entre em contato com o Raul</a></small>
                     </div>
                 </div>
-                <div class="input-group mb-3">
-                    <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
-                </div>
-            </form>
-                <div class="row">
-                    <small>Não tem conta? <a href="https://wa.me/5511915551648" target="_blank">Entre em contato com o Raul</a></small>
-                </div>
-          </div>
-       </div> 
+            </div> 
 
-      </div>
+        </div>
     </div>
 
 </body>

@@ -48,3 +48,9 @@ body{
      }
 
 }
+
+.alert-sm {
+    font-size: 0.875rem; /* Ajusta o tamanho da fonte */
+    padding: 0.5rem 1rem; /* Ajusta o padding para deixar o alerta mais compacto */
+}
+
