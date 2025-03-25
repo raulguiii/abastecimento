@@ -10,6 +10,14 @@ def login():
 def index():
     return render_template("index.html")
 
+@app.route("/comprovantes")
+def comprovantes():
+    return render_template("comprovantes.html")
+
+@app.route("/logout")
+def logout():
+    return redirect(url_for("login"))  # Redireciona para login.html
+
 @app.route("/login", methods=["POST"])
 def do_login():
     return redirect(url_for("index"))

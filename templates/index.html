@@ -228,8 +228,8 @@
                                 <i class="bi bi-caret-down-fill"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#" class="dropdown-item" id="comprovantes-link">Comprovantes</a>
-                                <a href="#" class="dropdown-item" id="logout-link">Sair</a>
+                                <a href="{{ url_for('comprovantes') }}" class="dropdown-item" id="comprovantes-link">Comprovantes</a>
+                                <a href="{{ url_for('logout') }}" class="dropdown-item" id="logout-link">Sair</a>
                             </div>                            
                         </li>
                     </ul>
@@ -985,29 +985,22 @@ document.addEventListener("DOMContentLoaded", function () {
         const correctPassword = "teste";
 
         if (password === correctPassword) {
-            window.location.href = "comprovantes.html"; // Redireciona para a página comprovantes
+            window.location.href = "/comprovantes"; // Caminho correto no Flask
         } else {
             alert("Senha incorreta! Recarregando a página...");
-            location.reload(); // Recarrega a página atual (index.html)
+            location.reload(); // Recarrega a página atual
         }
     };
-
-    // Evento de clique no botão "Sair"
-    if (logoutButton) {
-        logoutButton.addEventListener("click", function (event) {
-            event.preventDefault(); // Previne o comportamento padrão do link
-            window.location.href = "login.html"; // Redireciona para a página de login
-        });
-    }
 
     // Evento de clique no botão "Comprovantes"
     if (comprovantesButton) {
         comprovantesButton.addEventListener("click", function (event) {
-            event.preventDefault(); // Previne o comportamento padrão do link
-            verifyPassword(); // Verifica a senha antes de redirecionar
+            event.preventDefault();
+            verifyPassword();
         });
     }
 });
+
 
     </script>
 
