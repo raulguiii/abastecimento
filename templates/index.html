@@ -8,8 +8,8 @@
     <title>Abastecimento - SEMECTI</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="image/logopref.png" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='image/logopref.png') }}">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
         <aside id="sidebar" class="js-sidebar">
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#" onclick="location.reload(); return false;"><img src="image/abastecimentoicon.png" alt="Ícone de abastecimento" style="width: 24px; height: 24px; margin-right: 8px;">Abastecimento</a>
+                    <a href="#" onclick="location.reload(); return false;"><img src="static/image/abastecimentoicon.png" alt="Ícone de abastecimento" style="width: 24px; height: 24px; margin-right: 8px;">Abastecimento</a>
                 </div>                
                 <ul class="sidebar-nav">
                     <li class="sidebar-header">Menu</li>
@@ -218,7 +218,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown d-flex align-items-center">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="image/icon.girl.png" class="avatar img-fluid rounded" alt="">
+                                <img src="static/image/icon.girl.png" class="avatar img-fluid rounded" alt="">
                             </a>
                             <div class="d-flex flex-column">
                                 <span class="fw-bold" style="font-size: 16px;">Valter Junior</span>
@@ -251,7 +251,7 @@
                     <!--ALMOXARIFADO AUTORIZAÇÃO-->    
                     <div id="almoxarifadoAut" class="tab-pane fade">
                         <h3>
-                            <img src="image/estoque.png" alt="Ícone de Estoque" style="width: 24px; height: 24px; margin-right: 8px;">
+                            <img src="static/image/estoque.png" alt="Ícone de Estoque" style="width: 24px; height: 24px; margin-right: 8px;">
                             ALMOXARIFADO
                         </h3>                        
                         <p>Preencha após realizar o abastecimento</p>
@@ -282,7 +282,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="comprovante" class="form-label">Comprovante (PNG):</label>
-                                <input type="file" class="form-control" id="comprovante" name="comprovante" accept="image/png" required>
+                                <input type="file" class="form-control" id="comprovante" name="comprovante" accept="static/image/png" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>                     
@@ -306,7 +306,7 @@
                 <!--CASA DE PROJETOS AUTORIZAÇÃO-->    
                 <div id="casaDeProjetosAut" class="tab-pane fade">
                     <h3>
-                        <img src="image/planta-da-casa.png" alt="Ícone de Casa de Projetos" style="width: 24px; height: 24px; margin-right: 8px;">
+                        <img src="static/image/planta-da-casa.png" alt="Ícone de Casa de Projetos" style="width: 24px; height: 24px; margin-right: 8px;">
                         CASA DE PROJETOS
                     </h3>                        
                     <p>Preencha após realizar o abastecimento</p>
@@ -336,7 +336,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="comprovante" class="form-label">Comprovante (PNG):</label>
-                            <input type="file" class="form-control" id="comprovante" name="comprovante" accept="image/png" required>
+                            <input type="file" class="form-control" id="comprovante" name="comprovante" accept="static/image/png" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>                     
@@ -360,7 +360,7 @@
                 <!--COMUNICACAO AUTORIZAÇÃO-->    
                 <div id="comunicacaoAut" class="tab-pane fade">
                     <h3>
-                        <img src="image/820508.png" alt="Ícone de COMUNICAÇÃO" style="width: 24px; height: 24px; margin-right: 8px;">
+                        <img src="static/image/820508.png" alt="Ícone de COMUNICAÇÃO" style="width: 24px; height: 24px; margin-right: 8px;">
                         COMUNICAÇÃO
                     </h3>                        
                     <p>Preencha após realizar o abastecimento</p>
@@ -391,7 +391,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="comprovante" class="form-label">Comprovante (PNG):</label>
-                            <input type="file" class="form-control" id="comprovante" name="comprovante" accept="image/png" required>
+                            <input type="file" class="form-control" id="comprovante" name="comprovante" accept="static/image/png" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>                     
@@ -415,7 +415,7 @@
                 <!--DEE AUTORIZAÇÃO-->    
                 <div id="deeAut" class="tab-pane fade">
                     <h3>
-                        <img src="image/4914553.png" alt="Ícone de DEE" style="width: 24px; height: 24px; margin-right: 8px;">
+                        <img src="static/image/4914553.png" alt="Ícone de DEE" style="width: 24px; height: 24px; margin-right: 8px;">
                         DEE
                     </h3>                        
                     <p>Preencha após realizar o abastecimento</p>
@@ -446,7 +446,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="comprovante" class="form-label">Comprovante (PNG):</label>
-                            <input type="file" class="form-control" id="comprovante" name="comprovante" accept="image/png" required>
+                            <input type="file" class="form-control" id="comprovante" name="comprovante" accept="static/image/png" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>                     
@@ -470,7 +470,7 @@
             <!--ENGENHARIA MANUTENÇÃO AUTORIZACAO-->
             <div id="engenhariaManAut" class="tab-pane fade">
                 <h3>
-                    <img src="image/1077147.png" alt="Ícone de Engenharia MANUTENÇÃO" style="width: 24px; height: 24px; margin-right: 8px;">
+                    <img src="static/image/1077147.png" alt="Ícone de Engenharia MANUTENÇÃO" style="width: 24px; height: 24px; margin-right: 8px;">
                     ENGENHARIA - MANUTENÇÃO
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
@@ -501,7 +501,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="comprovante" class="form-label">Comprovante (PNG):</label>
-                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="image/png" required>
+                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="static/image/png" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
@@ -525,7 +525,7 @@
             <!--ENGENHARIA PROJETOS AUTORIZACAO-->
             <div id="engenhariaProjAut" class="tab-pane fade">
                 <h3>
-                    <img src="image/4538996.png" alt="Ícone de Engenharia PROJETOS" style="width: 24px; height: 24px; margin-right: 8px;">
+                    <img src="static/image/4538996.png" alt="Ícone de Engenharia PROJETOS" style="width: 24px; height: 24px; margin-right: 8px;">
                     ENGENHARIA - PROJETOS
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
@@ -556,7 +556,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="comprovante" class="form-label">Comprovante (PNG):</label>
-                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="image/png" required>
+                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="static/image/png" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
@@ -580,7 +580,7 @@
                     <!--GABINETE AUTORIZAÇÃO-->    
                     <div id="gabineteAut" class="tab-pane fade">
                         <h3>
-                            <img src="image/2541979.png" alt="Ícone de gabinete" style="width: 24px; height: 24px; margin-right: 8px;">
+                            <img src="static/image/2541979.png" alt="Ícone de gabinete" style="width: 24px; height: 24px; margin-right: 8px;">
                             GABINETE
                         </h3>                        
                         <p>Preencha após realizar o abastecimento</p>
@@ -611,7 +611,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="comprovante" class="form-label">Comprovante (PNG):</label>
-                                <input type="file" class="form-control" id="comprovante" name="comprovante" accept="image/png" required>
+                                <input type="file" class="form-control" id="comprovante" name="comprovante" accept="static/image/png" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>                     
@@ -635,7 +635,7 @@
             <!--INFORMATICA AUTORIZACAO-->
             <div id="informaticaAut" class="tab-pane fade">
                 <h3>
-                    <img src="image/78951.png" alt="Ícone de informatica" style="width: 24px; height: 24px; margin-right: 8px;">
+                    <img src="static/image/78951.png" alt="Ícone de informatica" style="width: 24px; height: 24px; margin-right: 8px;">
                     INFORMÁTICA
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
@@ -666,7 +666,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="comprovante" class="form-label">Comprovante (PNG):</label>
-                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="image/png" required>
+                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="static/image/png" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
@@ -690,7 +690,7 @@
             <!--LOGISTICA AUTORIZACAO-->
             <div id="logisticaAut" class="tab-pane fade">
                 <h3>
-                    <img src="image/4394181.png" alt="Ícone de logistica" style="width: 24px; height: 24px; margin-right: 8px;">
+                    <img src="static/image/4394181.png" alt="Ícone de logistica" style="width: 24px; height: 24px; margin-right: 8px;">
                     LOGÍSTICA
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
@@ -721,7 +721,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="comprovante" class="form-label">Comprovante (PNG):</label>
-                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="image/png" required>
+                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="static/image/png" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
@@ -745,7 +745,7 @@
             <!--NUCLEO AUTORIZACAO-->
             <div id="nucleoAut" class="tab-pane fade">
                 <h3>
-                    <img src="image/29302.png" alt="Ícone de nucleo" style="width: 24px; height: 24px; margin-right: 8px;">
+                    <img src="static/image/29302.png" alt="Ícone de nucleo" style="width: 24px; height: 24px; margin-right: 8px;">
                     NÚCLEO PEDAGÓGICO
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
@@ -776,7 +776,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="comprovante" class="form-label">Comprovante (PNG):</label>
-                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="image/png" required>
+                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="static/image/png" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
@@ -800,7 +800,7 @@
             <!--NUTRIÇÃO AUTORIZACAO-->
             <div id="nutricaoAut" class="tab-pane fade">
                 <h3>
-                    <img src="image/649371.png" alt="Ícone de nutricao" style="width: 24px; height: 24px; margin-right: 8px;">
+                    <img src="static/image/649371.png" alt="Ícone de nutricao" style="width: 24px; height: 24px; margin-right: 8px;">
                     NUTRIÇÃO
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
@@ -831,7 +831,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="comprovante" class="form-label">Comprovante (PNG):</label>
-                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="image/png" required>
+                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="static/image/png" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
@@ -855,7 +855,7 @@
             <!--SUPERVISAO AUTORIZACAO-->
             <div id="supervisaoAut" class="tab-pane fade">
                 <h3>
-                    <img src="image/65000.png" alt="Ícone de supervisao" style="width: 24px; height: 24px; margin-right: 8px;">
+                    <img src="static/image/65000.png" alt="Ícone de supervisao" style="width: 24px; height: 24px; margin-right: 8px;">
                     SUPERVISÃO
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
@@ -886,7 +886,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="comprovante" class="form-label">Comprovante (PNG):</label>
-                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="image/png" required>
+                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="static/image/png" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
@@ -910,7 +910,7 @@
             <!--VIGILANCIA AUTORIZACAO-->
             <div id="vigilanciaAut" class="tab-pane fade">
                 <h3>
-                    <img src="image/139787.png" alt="Ícone de vigilancia" style="width: 24px; height: 24px; margin-right: 8px;">
+                    <img src="static/image/139787.png" alt="Ícone de vigilancia" style="width: 24px; height: 24px; margin-right: 8px;">
                     VIGILÂNCIA
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
@@ -941,7 +941,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="comprovante" class="form-label">Comprovante (PNG):</label>
-                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="image/png" required>
+                        <input type="file" class="form-control" id="comprovante" name="comprovante" accept="static/image/png" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
@@ -1012,7 +1012,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="static/js/script.js"></script>
 </body>
 </html>
 
