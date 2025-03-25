@@ -228,9 +228,9 @@
                                 <i class="bi bi-caret-down-fill"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="comprovantes.html" class="dropdown-item">Comprovantes</a>
-                                <a href="#" class="dropdown-item">Sair</a>
-                            </div>
+                                <a href="#" class="dropdown-item" id="comprovantes-link">Comprovantes</a>
+                                <a href="#" class="dropdown-item" id="logout-link">Sair</a>
+                            </div>                            
                         </li>
                     </ul>
                 </div>                       
@@ -925,19 +925,35 @@
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const logoutButton = document.querySelector(".dropdown-item[href='#']");
-    const comprovantesButton = document.querySelector(".dropdown-item[href='comprovantes.html']");
+    const logoutButton = document.querySelector("#logout-link");
+    const comprovantesButton = document.querySelector("#comprovantes-link");
 
+    // Função para verificar a senha
+    const verifyPassword = () => {
+        const password = prompt("Digite a senha para acessar os comprovantes:");
+        const correctPassword = "Semecti@123Raul123";
+
+        if (password === correctPassword) {
+            window.location.href = "comprovantes.html"; // Redireciona para a página comprovantes
+        } else {
+            alert("Senha incorreta! Recarregando a página...");
+            location.reload(); // Recarrega a página atual (index.html)
+        }
+    };
+
+    // Evento de clique no botão "Sair"
     if (logoutButton) {
         logoutButton.addEventListener("click", function (event) {
             event.preventDefault(); // Previne o comportamento padrão do link
-            window.location.href = "login.html";
+            window.location.href = "login.html"; // Redireciona para a página de login
         });
     }
 
+    // Evento de clique no botão "Comprovantes"
     if (comprovantesButton) {
-        comprovantesButton.addEventListener("click", function () {
-            window.location.href = "comprovantes.html";
+        comprovantesButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Previne o comportamento padrão do link
+            verifyPassword(); // Verifica a senha antes de redirecionar
         });
     }
 });
