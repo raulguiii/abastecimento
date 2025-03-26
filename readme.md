@@ -1,9 +1,11 @@
 banco: 
 
 CREATE DATABASE db_abastecimento_semecti; 
-USE db_abastecimento;
+USE db_abastecimento_semecti;
 
 -- Tabela Usuários
+-- Para criar usuario o departamento deve ser informado dessa forma 'Admin','Almoxarifado','Comunicação', 'DEE', 'Casa_de_Projetos', 'Engenharia_Manutenção', 'Engenharia_Projetos', 'Gabinete','Logística', 'Informática', 'Núcleo', 'Nutrição', 'Supervisão', 'Vigilância'
+-- Qualquer departamento escrito diferente vai dar pau
 Select * from usuarios;
 CREATE TABLE usuarios ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
@@ -13,7 +15,16 @@ CREATE TABLE usuarios (
 	departamento VARCHAR(100) NOT NULL, 
 	rgf VARCHAR(50) UNIQUE NOT NULL 
 );
-INSERT INTO usuarios (nome_completo, senha, cargo, departamento, rgf) VALUES ('', '', '', '', '');
+INSERT INTO usuarios (nome_completo, senha, cargo, departamento, rgf) VALUES ('Joel', 'Joel10', 'Chefe de Departamento', 'Engenharia_Manutenção', '85410');
+
+UPDATE usuarios 
+SET 
+    nome_completo = 'Jessica Freitas', 
+    senha = 'JessicaFreitas10', 
+    cargo = 'Chefe de Departamento', 
+    departamento = 'Gabinete', 
+    rgf = '87410' 
+WHERE id = 3;
 
 
 -- Tabela Almoxarifado
