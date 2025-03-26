@@ -45,7 +45,12 @@ def login():
 def index():
     if "usuario" not in session:
         return redirect(url_for("login"))
-    return render_template("index.html")
+
+    # Pegue os dados do usuário logado, por exemplo, o departamento
+    departamento_usuario = session.get("departamento")  # Supondo que o departamento está armazenado na sessão
+    
+    return render_template("index.html", departamento_usuario=departamento_usuario)
+
 
 @app.route("/comprovantes")
 def comprovantes():

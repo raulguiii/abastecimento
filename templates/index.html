@@ -30,7 +30,9 @@
     
                 <ul class="sidebar-nav">
                     <li class="sidebar-header">Departamentos</li>
-                    <li class="sidebar-item">
+                
+                    <!-- ALMOXARIFADO -->
+                    <li class="sidebar-item" {% if departamento_usuario in ['Casa_de_Projetos','Comunicação', 'DEE', 'Engenharia_Manutenção', 'Engenharia_Projetos', 'Gabinete', 'Informática','Logística', 'Núcleo', 'Nutrição', 'Supervisão', 'Vigilância' ] %}style="display: none;"{% endif %}>
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#almoxarifado" data-bs-toggle="collapse">
                             <i class="fa-solid fa-file-lines pe-2"></i> <strong>ALMOXARIFADO</strong>
                         </a>
@@ -43,7 +45,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item" {% if departamento_usuario in ['Almoxarifado','Comunicação', 'DEE', 'Engenharia_Manutenção', 'Engenharia_Projetos', 'Gabinete', 'Informática','Logística', 'Núcleo', 'Nutrição', 'Supervisão', 'Vigilância' ] %}style="display: none;"{% endif %}>
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#casaDeProjetos" data-bs-toggle="collapse">
                             <i class="fa-solid fa-file-lines pe-2"></i> <strong>CASA DE PROJETOS</strong>
                         </a>
@@ -56,7 +58,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item" {% if departamento_usuario in ['Casa_de_Projetos','Almoxarifado', 'DEE', 'Engenharia_Manutenção', 'Engenharia_Projetos', 'Gabinete', 'Informática','Logística', 'Núcleo', 'Nutrição', 'Supervisão', 'Vigilância' ] %}style="display: none;"{% endif %}>
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#comunicacao" data-bs-toggle="collapse">
                             <i class="fa-solid fa-file-lines pe-2"></i> <strong>COMUNICAÇÃO</strong>
                         </a>
@@ -69,7 +71,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item" {% if departamento_usuario in ['Casa_de_Projetos','Almoxarifado', 'Comunicação', 'Engenharia_Manutenção', 'Engenharia_Projetos', 'Gabinete', 'Informática','Logística', 'Núcleo', 'Nutrição', 'Supervisão', 'Vigilância' ] %}style="display: none;"{% endif %}>
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#dee" data-bs-toggle="collapse">
                             <i class="fa-solid fa-file-lines pe-2"></i> <strong>DEE</strong>
                         </a>
@@ -82,7 +84,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item" {% if departamento_usuario in ['Almoxarifado','Comunicação', 'DEE', 'Casa_de_Projetos', 'Engenharia_Projetos', 'Gabinete', 'Informática','Logística', 'Núcleo', 'Nutrição', 'Supervisão', 'Vigilância' ] %}style="display: none;"{% endif %}>
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#engenhariaMan" data-bs-toggle="collapse">
                             <i class="fa-regular fa-user pe-2"></i> <strong>ENGENHARIA - MANUTENÇÃO</strong>
                         </a>
@@ -95,7 +97,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item" {% if departamento_usuario in ['Almoxarifado','Comunicação', 'DEE', 'Casa_de_Projetos', 'Engenharia_Manutenção', 'Gabinete', 'Informática','Logística', 'Núcleo', 'Nutrição', 'Supervisão', 'Vigilância' ] %}style="display: none;"{% endif %}>
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#engenhariaProj" data-bs-toggle="collapse">
                             <i class="fa-solid fa-sliders pe-2"></i> <strong>ENGENHARIA - PROJETOS</strong>
                         </a>
@@ -108,7 +110,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item" {% if departamento_usuario in ['Almoxarifado','Comunicação', 'DEE', 'Casa_de_Projetos', 'Engenharia_Manutenção', 'Engenharia_Projetos', 'Informática','Logística', 'Núcleo', 'Nutrição', 'Supervisão', 'Vigilância' ] %}style="display: none;"{% endif %}>
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#gabinete" data-bs-toggle="collapse">
                             <i class="fa-solid fa-file-lines pe-2"></i> <strong>GABINETE</strong>
                         </a>
@@ -121,7 +123,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item" {% if departamento_usuario in ['Almoxarifado','Comunicação', 'DEE', 'Casa_de_Projetos', 'Engenharia_Manutenção', 'Engenharia_Projetos', 'Gabinete','Logística', 'Núcleo', 'Nutrição', 'Supervisão', 'Vigilância' ] %}style="display: none;"{% endif %}>
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#informatica" data-bs-toggle="collapse">
                             <i class="fa-regular fa-user pe-2"></i> <strong>INFORMÁTICA</strong>
                         </a>
@@ -134,7 +136,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item" {% if departamento_usuario in ['Almoxarifado','Comunicação', 'DEE', 'Casa_de_Projetos', 'Engenharia_Manutenção', 'Engenharia_Projetos', 'Gabinete','Informática', 'Núcleo', 'Nutrição', 'Supervisão', 'Vigilância' ] %}style="display: none;"{% endif %}>
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#logistica" data-bs-toggle="collapse">
                             <i class="fa-regular fa-user pe-2"></i> <strong>LOGÍSTICA</strong>
                         </a>
@@ -147,7 +149,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item" {% if departamento_usuario in ['Almoxarifado','Comunicação', 'DEE', 'Casa_de_Projetos', 'Engenharia_Manutenção', 'Engenharia_Projetos', 'Gabinete','Logística', 'Informática', 'Nutrição', 'Supervisão', 'Vigilância' ] %}style="display: none;"{% endif %}>
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#nucleo" data-bs-toggle="collapse"
                             aria-expanded="false"><i class="fa-regular fa-user pe-2"></i>
                             <strong>NÚCLEO</strong>
@@ -161,7 +163,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item" {% if departamento_usuario in ['Almoxarifado','Comunicação', 'DEE', 'Casa_de_Projetos', 'Engenharia_Manutenção', 'Engenharia_Projetos', 'Gabinete','Logística', 'Informática', 'Núcleo', 'Supervisão', 'Vigilância' ] %}style="display: none;"{% endif %}>
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#nutricao" data-bs-toggle="collapse"
                             aria-expanded="false"><i class="fa-regular fa-user pe-2"></i>
                         <strong>NUTRIÇÃO</strong>
@@ -175,7 +177,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item" {% if departamento_usuario in ['Almoxarifado','Comunicação', 'DEE', 'Casa_de_Projetos', 'Engenharia_Manutenção', 'Engenharia_Projetos', 'Gabinete','Logística', 'Informática', 'Núcleo', 'Nutrição', 'Vigilância' ] %}style="display: none;"{% endif %}>
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#supervisao" data-bs-toggle="collapse"
                             aria-expanded="false"><i class="fa-regular fa-user pe-2"></i>
                         <strong>SUPERVISÃO</strong>
@@ -189,7 +191,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item" {% if departamento_usuario in ['Almoxarifado','Comunicação', 'DEE', 'Casa_de_Projetos', 'Engenharia_Manutenção', 'Engenharia_Projetos', 'Gabinete','Logística', 'Informática', 'Núcleo', 'Nutrição', 'Supervisão' ] %}style="display: none;"{% endif %}>
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#vigilancia" data-bs-toggle="collapse"
                             aria-expanded="false"><i class="fa-regular fa-user pe-2"></i>
                         <strong>VIGILÂNCIA</strong>
