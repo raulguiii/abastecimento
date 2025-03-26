@@ -308,7 +308,7 @@
                 <th>Comprovante</th>
             </tr>
         </thead>
-        <tbody id="tabelaAbastecimentos">
+        <tbody id="tabelaAbastecimentosAlmox">
             <!-- Os dados serão preenchidos dinamicamente -->
         </tbody>
     </table>
@@ -319,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch("/abastecimentoAlmoxarifadoHist")
         .then(response => response.json())
         .then(data => {
-            const tabela = document.getElementById("tabelaAbastecimentos");
+            const tabela = document.getElementById("tabelaAbastecimentosAlmox");
             data.forEach(abastecimento => {
                 const row = `<tr>
                     <td>${abastecimento.id}</td>
@@ -356,6 +356,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         CASA DE PROJETOS
                     </h3>                        
                     <p>Preencha após realizar o abastecimento</p>
+                    <form class="mt-3" action="/abastecimentoCasaDeProjetosAut" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome:</label>
                             <input type="text" class="form-control" id="nome" name="nome" required>
@@ -390,8 +391,53 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <!--CASA DE PROJETOS HISTORICO-->    
             <div id="casaDeProjetosHist" class="tab-pane fade">
-                <h3>Todos abastecimentos realizados</h3>
-</div>
+                <h3>
+                    <img src="static/image/planta-da-casa.png" alt="Ícone de Casa de Projetos" style="width: 24px; height: 24px; margin-right: 8px;">
+                    CASA DE PROJETOS
+                </h3>
+                <p>Todos abastecimentos realizados em Março</p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>RGF</th>
+                            <th>KM</th>
+                            <th>Placa</th>
+                            <th>Data</th>
+                            <th>Posto</th>
+                            <th>Comprovante</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaAbastecimentosCasaDeProjetos">
+                        <!-- Os dados serão preenchidos dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch("/abastecimentoCasaDeProjetosHist")
+                    .then(response => response.json())
+                    .then(data => {
+                        const tabela = document.getElementById("tabelaAbastecimentosCasaDeProjetos");
+                        data.forEach(abastecimento => {
+                            const row = `<tr>
+                                <td>${abastecimento.id}</td>
+                                <td>${abastecimento.nome}</td>
+                                <td>${abastecimento.rgf}</td>
+                                <td>${abastecimento.km}</td>
+                                <td>${abastecimento.placa}</td>
+                                <td>${abastecimento.data}</td>
+                                <td>${abastecimento.posto}</td>
+                                <td><a href="${abastecimento.comprovante}" target="_blank">Ver Comprovante</a></td>
+                            </tr>`;
+                            tabela.innerHTML += row;
+                        });
+                    })
+                    .catch(error => console.error("Erro ao carregar abastecimentos:", error));
+            });
+            </script>
                   
 
 

@@ -65,8 +65,12 @@ def logout():
     session.pop("usuario", None)
     return redirect(url_for("login"))
 
+
+
+                        # A L M O X A R I F A D O #
+
 @app.route("/abastecimentoAlmoxarifadoAut", methods=["POST"])
-def registrar_abastecimento():
+def registrar_abastecimentoAlmox():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
@@ -102,7 +106,7 @@ def registrar_abastecimento():
     return redirect(url_for("index"))
 
 @app.route("/abastecimentoAlmoxarifadoHist", methods=["GET"])
-def listar_abastecimentos():
+def listar_abastecimentosAlmox():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
@@ -114,6 +118,64 @@ def listar_abastecimentos():
     conn.close()
 
     return jsonify(abastecimentos)
+
+
+
+
+                    # CASA DE PROJETOS #
+
+@app.route("/abastecimentoCasaDeProjetosAut", methods=["POST"])
+def registrar_abastecimentoCasaDeProjetos():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    nome = request.form["nome"]
+    rgf = request.form["rgf"]
+    km = request.form["km"]
+    placa = request.form["placa"]
+    data = request.form["data"]
+    posto = request.form["posto"]
+
+    if "comprovante" not in request.files:
+        return "Erro: Nenhum arquivo enviado."
+    
+    file = request.files["comprovante"]
+    if file.filename == "":
+        return "Erro: Nome de arquivo inválido."
+
+    caminho_comprovante = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(caminho_comprovante)
+
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO abastecimentoCasaDeProjetos (nome, rgf, km, placa, data, posto, comprovante)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """, (nome, rgf, km, placa, data, posto, caminho_comprovante))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect(url_for("index"))
+
+@app.route("/abastecimentoCasaDeProjetosHist", methods=["GET"])
+def listar_abastecimentosCasaDeProjetos():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    conn = conectar_bd()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoCasaDeProjetos")
+    abastecimentos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    return jsonify(abastecimentos)
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
