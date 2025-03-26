@@ -1,17 +1,23 @@
 banco: 
 
 CREATE DATABASE db_abastecimento_semecti; 
-
 USE db_abastecimento;
 
-CREATE TABLE usuarios ( id INT AUTO_INCREMENT PRIMARY KEY, nome_completo VARCHAR(255) NOT NULL, senha VARCHAR(255) NOT NULL, cargo VARCHAR(100) NOT NULL, departamento VARCHAR(100) NOT NULL, rgf VARCHAR(50) UNIQUE NOT NULL );
+-- Tabela Usuários
+Select * from usuarios;
+CREATE TABLE usuarios ( 
+	id INT AUTO_INCREMENT PRIMARY KEY, 
+	nome_completo VARCHAR(255) NOT NULL, 
+	senha VARCHAR(255) NOT NULL, 
+	cargo VARCHAR(100) NOT NULL, 
+	departamento VARCHAR(100) NOT NULL, 
+	rgf VARCHAR(50) UNIQUE NOT NULL 
+);
+INSERT INTO usuarios (nome_completo, senha, cargo, departamento, rgf) VALUES ('', '', '', '', '');
 
-select * from usuarios;
 
-INSERT INTO usuarios (nome_completo, senha, cargo, departamento, rgf) VALUES ('Raul', 'teste', 'Chefe', 'TI', '123456');
-
-INSERT INTO usuarios (nome_completo, senha, cargo, departamento, rgf) VALUES ('Raul', 'teste', 'Chefe', 'TI', '2005');
-
+-- Tabela Almoxarifado
+Select * from abastecimentoAlmox;
 CREATE TABLE abastecimentoAlmox ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
     nome VARCHAR(255) NOT NULL, 
@@ -24,8 +30,9 @@ CREATE TABLE abastecimentoAlmox (
     FOREIGN KEY (rgf) REFERENCES usuarios(rgf) 
 );
 
-select * from abastecimentoAlmox;
 
+-- Tabela Casa de Projetos
+Select * from abastecimentoCasaDeProjetos;
 CREATE TABLE abastecimentoCasaDeProjetos ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
     nome VARCHAR(255) NOT NULL, 
@@ -38,9 +45,9 @@ CREATE TABLE abastecimentoCasaDeProjetos (
     FOREIGN KEY (rgf) REFERENCES usuarios(rgf) 
 );
 
-select * from abastecimentoCasaDeProjetos;
 
-
+-- Tabela Comunicação
+Select * from abastecimentoComunicacao;
 CREATE TABLE abastecimentoComunicacao ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
     nome VARCHAR(255) NOT NULL, 
@@ -54,10 +61,8 @@ CREATE TABLE abastecimentoComunicacao (
 );
 
 
-select * from abastecimentoComunicacao;
-
-
-
+-- Tabela Comunicação
+Select * from abastecimentoDEE;
 CREATE TABLE abastecimentoDEE ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
     nome VARCHAR(255) NOT NULL, 
@@ -71,9 +76,8 @@ CREATE TABLE abastecimentoDEE (
 );
 
 
-select * from abastecimentoDEE;
-
-
+-- Tabela Engenharia Manutenção
+Select * from abastecimentoEng1;
 CREATE TABLE abastecimentoEng1 ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
     nome VARCHAR(255) NOT NULL, 
@@ -87,9 +91,8 @@ CREATE TABLE abastecimentoEng1 (
 );
 
 
-select * from abastecimentoEng1;
-
-
+-- Tabela Engenharia Projetos
+Select * from abastecimentoEng2;
 CREATE TABLE abastecimentoEng2 ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
     nome VARCHAR(255) NOT NULL, 
@@ -102,9 +105,9 @@ CREATE TABLE abastecimentoEng2 (
     FOREIGN KEY (rgf) REFERENCES usuarios(rgf) 
 );
 
-select * from abastecimentoEng2;
 
-
+-- Tabela Gabinete
+Select * from abastecimentoGabinete;
 CREATE TABLE abastecimentoGabinete ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
     nome VARCHAR(255) NOT NULL, 
@@ -117,9 +120,9 @@ CREATE TABLE abastecimentoGabinete (
     FOREIGN KEY (rgf) REFERENCES usuarios(rgf) 
 );
 
-select * from abastecimentoGabinete;
 
-
+-- Tabela Informática
+Select * from abastecimentoInformatica;
 CREATE TABLE abastecimentoInformatica ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
     nome VARCHAR(255) NOT NULL, 
@@ -132,9 +135,9 @@ CREATE TABLE abastecimentoInformatica (
     FOREIGN KEY (rgf) REFERENCES usuarios(rgf) 
 );
 
-select * from abastecimentoInformatica;
 
-
+-- Tabela Logística
+Select * from abastecimentoLogistica;
 CREATE TABLE abastecimentoLogistica ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
     nome VARCHAR(255) NOT NULL, 
@@ -147,9 +150,9 @@ CREATE TABLE abastecimentoLogistica (
     FOREIGN KEY (rgf) REFERENCES usuarios(rgf) 
 );
 
-select * from abastecimentoLogistica;
 
-
+-- Tabela Núcleo
+Select * from abastecimentoNucleo;
 CREATE TABLE abastecimentoNucleo ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
     nome VARCHAR(255) NOT NULL, 
@@ -162,10 +165,9 @@ CREATE TABLE abastecimentoNucleo (
     FOREIGN KEY (rgf) REFERENCES usuarios(rgf) 
 );
 
-select * from abastecimentoNucleo;
 
-
-
+-- Tabela Nutrição 
+Select * from abastecimentoNutricao;
 CREATE TABLE abastecimentoNutricao ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
     nome VARCHAR(255) NOT NULL, 
@@ -178,10 +180,9 @@ CREATE TABLE abastecimentoNutricao (
     FOREIGN KEY (rgf) REFERENCES usuarios(rgf) 
 );
 
-select * from abastecimentoNutricao;
 
-
-
+-- Tabela Supervisao 
+Select * from abastecimentoSupervisao;
 CREATE TABLE abastecimentoSupervisao ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
     nome VARCHAR(255) NOT NULL, 
@@ -194,9 +195,9 @@ CREATE TABLE abastecimentoSupervisao (
     FOREIGN KEY (rgf) REFERENCES usuarios(rgf) 
 );
 
-select * from abastecimentoSupervisao;
 
-
+-- Tabela Vigilancia 
+Select * from abastecimentoVigilancia;
 CREATE TABLE abastecimentoVigilancia ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
     nome VARCHAR(255) NOT NULL, 
@@ -209,4 +210,6 @@ CREATE TABLE abastecimentoVigilancia (
     FOREIGN KEY (rgf) REFERENCES usuarios(rgf) 
 );
 
-select * from abastecimentoVigilancia;
+
+
+
