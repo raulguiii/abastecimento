@@ -63,6 +63,7 @@ def do_login():
 
     if usuario:
         session["usuario"] = usuario[0]["nome_completo"]
+        session["cargo"] = usuario[0]["cargo"]  # Armazena o cargo
         return redirect(url_for("index"))
     else:
         return render_template("login.html", error_message="Credenciais inválidas.")
