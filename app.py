@@ -10,8 +10,24 @@ db_config = {
     "host": "localhost",
     "user": "root",
     "password": "raulgui123!",
-    "database": "db_abastecimento"
+    "database": "db_abastecimento_semecti"
 }
+
+def executar_consulta(query, params=None, fetch=False):
+    conn = conectar_bd()
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute(query, params or ())
+    
+    resultado = None
+    if fetch:
+        resultado = cursor.fetchall()
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return resultado
 
 # Diretório para salvar os comprovantes
 UPLOAD_FOLDER = "static/comprovantes/"
@@ -40,25 +56,17 @@ def comprovantes():
 @app.route("/login", methods=["POST"])
 def do_login():
     nome_completo = request.form["nome_completo"]
-    senha = request.form["senha"]  # Senha em texto puro
+    senha = request.form["senha"]
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-
-    # Busca usuário pelo nome e senha (sem hash)
-    cursor.execute("SELECT * FROM usuarios WHERE nome_completo = %s AND senha = %s", (nome_completo, senha))
-    usuario = cursor.fetchone()
-
-    cursor.close()
-    conn.close()
+    query = "SELECT * FROM usuarios WHERE nome_completo = %s AND senha = %s"
+    usuario = executar_consulta(query, (nome_completo, senha), fetch=True)
 
     if usuario:
-        session["usuario"] = usuario["nome_completo"]
+        session["usuario"] = usuario[0]["nome_completo"]
         return redirect(url_for("index"))
     else:
-        # Passando uma mensagem de erro para o template
-        error_message = "Credenciais inválidas."
-        return render_template("login.html", error_message=error_message)  # Passando a mensagem de erro
+        return render_template("login.html", error_message="Credenciais inválidas.")
+
 
 @app.route("/logout")
 def logout():
@@ -110,12 +118,8 @@ def listar_abastecimentosAlmox():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoAlmox")
-    abastecimentos = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoAlmox"
+    abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
 
@@ -165,16 +169,10 @@ def listar_abastecimentosCasaDeProjetos():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoCasaDeProjetos")
-    abastecimentos = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoCasaDeProjetos"
+    abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
-
-
 
 
                 # COMUNICAÇÃO #
@@ -220,15 +218,10 @@ def listar_abastecimentosComunicacao():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoComunicacao")
-    abastecimentos = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoComunicacao"
+    abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
-
 
 
 
@@ -276,17 +269,10 @@ def listar_abastecimentosDEE():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoDEE")
-    abastecimentos = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoDEE"
+    abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
-
-
-
 
 
 
@@ -333,16 +319,10 @@ def listar_abastecimentosEng1():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoEng1")
-    abastecimentos = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoEng1"
+    abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
-
-
 
 
 
@@ -389,12 +369,8 @@ def listar_abastecimentosEng2():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoEng2")
-    abastecimentos = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoEng2"
+    abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
 
@@ -443,15 +419,10 @@ def listar_abastecimentosGabinete():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoGabinete")
-    abastecimentos = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoGabinete"
+    abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
-
 
 
 # Informatica #
@@ -497,15 +468,10 @@ def listar_abastecimentosInformatica():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoInformatica")
-    abastecimentos = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoInformatica"
+    abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
-
 
 
 
@@ -552,15 +518,10 @@ def listar_abastecimentosLogistica():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoLogistica")
-    abastecimentos = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoLogistica"
+    abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
-
 
 
 # Núcleo #
@@ -606,16 +567,10 @@ def listar_abastecimentosNucleo():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoNucleo")
-    abastecimentos = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoNucleo"
+    abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
-
-
 
 
 # Nutricao #
@@ -661,15 +616,10 @@ def listar_abastecimentosNutricao():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoNutricao")
-    abastecimentos = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoNutricao"
+    abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
-
 
 
 # SUPERVISAO #
@@ -715,15 +665,10 @@ def listar_abastecimentosSupervisao():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoSupervisao")
-    abastecimentos = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoSupervisao"
+    abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
-
 
 
 # VIGILANCIA #
@@ -769,12 +714,8 @@ def listar_abastecimentosVigilancia():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    conn = conectar_bd()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoVigilancia")
-    abastecimentos = cursor.fetchall()
-    cursor.close()
-    conn.close()
+    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoVigilancia"
+    abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
 
