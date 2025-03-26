@@ -177,5 +177,606 @@ def listar_abastecimentosCasaDeProjetos():
 
 
 
+                # COMUNICAÇÃO #
+
+@app.route("/abastecimentoComunAut", methods=["POST"])
+def registrar_abastecimentoComunicacao():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    nome = request.form["nome"]
+    rgf = request.form["rgf"]
+    km = request.form["km"]
+    placa = request.form["placa"]
+    data = request.form["data"]
+    posto = request.form["posto"]
+
+    if "comprovante" not in request.files:
+        return "Erro: Nenhum arquivo enviado."
+    
+    file = request.files["comprovante"]
+    if file.filename == "":
+        return "Erro: Nome de arquivo inválido."
+
+    caminho_comprovante = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(caminho_comprovante)
+
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO abastecimentoComunicacao (nome, rgf, km, placa, data, posto, comprovante)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """, (nome, rgf, km, placa, data, posto, caminho_comprovante))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect(url_for("index"))
+
+@app.route("/abastecimentoComunHist", methods=["GET"])
+def listar_abastecimentosComunicacao():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    conn = conectar_bd()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoComunicacao")
+    abastecimentos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    return jsonify(abastecimentos)
+
+
+
+
+
+                # DEE #
+
+@app.route("/abastecimentoDEEAut", methods=["POST"])
+def registrar_abastecimentoDEE():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    nome = request.form["nome"]
+    rgf = request.form["rgf"]
+    km = request.form["km"]
+    placa = request.form["placa"]
+    data = request.form["data"]
+    posto = request.form["posto"]
+
+    if "comprovante" not in request.files:
+        return "Erro: Nenhum arquivo enviado."
+    
+    file = request.files["comprovante"]
+    if file.filename == "":
+        return "Erro: Nome de arquivo inválido."
+
+    caminho_comprovante = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(caminho_comprovante)
+
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO abastecimentoDEE (nome, rgf, km, placa, data, posto, comprovante)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """, (nome, rgf, km, placa, data, posto, caminho_comprovante))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect(url_for("index"))
+
+@app.route("/abastecimentoDEEHist", methods=["GET"])
+def listar_abastecimentosDEE():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    conn = conectar_bd()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoDEE")
+    abastecimentos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    return jsonify(abastecimentos)
+
+
+
+
+
+
+                # engenharia manutenção#
+
+@app.route("/abastecimentoEng1Aut", methods=["POST"])
+def registrar_abastecimentoEng1():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    nome = request.form["nome"]
+    rgf = request.form["rgf"]
+    km = request.form["km"]
+    placa = request.form["placa"]
+    data = request.form["data"]
+    posto = request.form["posto"]
+
+    if "comprovante" not in request.files:
+        return "Erro: Nenhum arquivo enviado."
+    
+    file = request.files["comprovante"]
+    if file.filename == "":
+        return "Erro: Nome de arquivo inválido."
+
+    caminho_comprovante = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(caminho_comprovante)
+
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO abastecimentoEng1 (nome, rgf, km, placa, data, posto, comprovante)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """, (nome, rgf, km, placa, data, posto, caminho_comprovante))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect(url_for("index"))
+
+@app.route("/abastecimentoEng1Hist", methods=["GET"])
+def listar_abastecimentosEng1():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    conn = conectar_bd()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoEng1")
+    abastecimentos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    return jsonify(abastecimentos)
+
+
+
+
+
+# engenharia projetos #
+
+@app.route("/abastecimentoEng2Aut", methods=["POST"])
+def registrar_abastecimentoEng2():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    nome = request.form["nome"]
+    rgf = request.form["rgf"]
+    km = request.form["km"]
+    placa = request.form["placa"]
+    data = request.form["data"]
+    posto = request.form["posto"]
+
+    if "comprovante" not in request.files:
+        return "Erro: Nenhum arquivo enviado."
+    
+    file = request.files["comprovante"]
+    if file.filename == "":
+        return "Erro: Nome de arquivo inválido."
+
+    caminho_comprovante = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(caminho_comprovante)
+
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO abastecimentoEng2 (nome, rgf, km, placa, data, posto, comprovante)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """, (nome, rgf, km, placa, data, posto, caminho_comprovante))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect(url_for("index"))
+
+@app.route("/abastecimentoEng2Hist", methods=["GET"])
+def listar_abastecimentosEng2():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    conn = conectar_bd()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoEng2")
+    abastecimentos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    return jsonify(abastecimentos)
+
+
+
+# gabinete #
+
+@app.route("/abastecimentoGabineteAut", methods=["POST"])
+def registrar_abastecimentoGabinete():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    nome = request.form["nome"]
+    rgf = request.form["rgf"]
+    km = request.form["km"]
+    placa = request.form["placa"]
+    data = request.form["data"]
+    posto = request.form["posto"]
+
+    if "comprovante" not in request.files:
+        return "Erro: Nenhum arquivo enviado."
+    
+    file = request.files["comprovante"]
+    if file.filename == "":
+        return "Erro: Nome de arquivo inválido."
+
+    caminho_comprovante = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(caminho_comprovante)
+
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO abastecimentoGabinete (nome, rgf, km, placa, data, posto, comprovante)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """, (nome, rgf, km, placa, data, posto, caminho_comprovante))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect(url_for("index"))
+
+@app.route("/abastecimentoGabineteHist", methods=["GET"])
+def listar_abastecimentosGabinete():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    conn = conectar_bd()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoGabinete")
+    abastecimentos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    return jsonify(abastecimentos)
+
+
+
+# Informatica #
+
+@app.route("/abastecimentoInformaticaAut", methods=["POST"])
+def registrar_abastecimentoInformatica():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    nome = request.form["nome"]
+    rgf = request.form["rgf"]
+    km = request.form["km"]
+    placa = request.form["placa"]
+    data = request.form["data"]
+    posto = request.form["posto"]
+
+    if "comprovante" not in request.files:
+        return "Erro: Nenhum arquivo enviado."
+    
+    file = request.files["comprovante"]
+    if file.filename == "":
+        return "Erro: Nome de arquivo inválido."
+
+    caminho_comprovante = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(caminho_comprovante)
+
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO abastecimentoInformatica (nome, rgf, km, placa, data, posto, comprovante)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """, (nome, rgf, km, placa, data, posto, caminho_comprovante))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect(url_for("index"))
+
+@app.route("/abastecimentoInformaticaHist", methods=["GET"])
+def listar_abastecimentosInformatica():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    conn = conectar_bd()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoInformatica")
+    abastecimentos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    return jsonify(abastecimentos)
+
+
+
+
+# Logistica #
+
+@app.route("/abastecimentoLogisticaAut", methods=["POST"])
+def registrar_abastecimentoLogistica():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    nome = request.form["nome"]
+    rgf = request.form["rgf"]
+    km = request.form["km"]
+    placa = request.form["placa"]
+    data = request.form["data"]
+    posto = request.form["posto"]
+
+    if "comprovante" not in request.files:
+        return "Erro: Nenhum arquivo enviado."
+    
+    file = request.files["comprovante"]
+    if file.filename == "":
+        return "Erro: Nome de arquivo inválido."
+
+    caminho_comprovante = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(caminho_comprovante)
+
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO abastecimentoLogistica (nome, rgf, km, placa, data, posto, comprovante)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """, (nome, rgf, km, placa, data, posto, caminho_comprovante))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect(url_for("index"))
+
+@app.route("/abastecimentoLogisticaHist", methods=["GET"])
+def listar_abastecimentosLogistica():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    conn = conectar_bd()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoLogistica")
+    abastecimentos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    return jsonify(abastecimentos)
+
+
+
+# Núcleo #
+
+@app.route("/abastecimentoNucleoAut", methods=["POST"])
+def registrar_abastecimentoNucleo():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    nome = request.form["nome"]
+    rgf = request.form["rgf"]
+    km = request.form["km"]
+    placa = request.form["placa"]
+    data = request.form["data"]
+    posto = request.form["posto"]
+
+    if "comprovante" not in request.files:
+        return "Erro: Nenhum arquivo enviado."
+    
+    file = request.files["comprovante"]
+    if file.filename == "":
+        return "Erro: Nome de arquivo inválido."
+
+    caminho_comprovante = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(caminho_comprovante)
+
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO abastecimentoNucleo (nome, rgf, km, placa, data, posto, comprovante)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """, (nome, rgf, km, placa, data, posto, caminho_comprovante))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect(url_for("index"))
+
+@app.route("/abastecimentoNucleoHist", methods=["GET"])
+def listar_abastecimentosNucleo():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    conn = conectar_bd()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoNucleo")
+    abastecimentos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    return jsonify(abastecimentos)
+
+
+
+
+# Nutricao #
+
+@app.route("/abastecimentoNutricaoAut", methods=["POST"])
+def registrar_abastecimentoNutricao():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    nome = request.form["nome"]
+    rgf = request.form["rgf"]
+    km = request.form["km"]
+    placa = request.form["placa"]
+    data = request.form["data"]
+    posto = request.form["posto"]
+
+    if "comprovante" not in request.files:
+        return "Erro: Nenhum arquivo enviado."
+    
+    file = request.files["comprovante"]
+    if file.filename == "":
+        return "Erro: Nome de arquivo inválido."
+
+    caminho_comprovante = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(caminho_comprovante)
+
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO abastecimentoNutricao (nome, rgf, km, placa, data, posto, comprovante)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """, (nome, rgf, km, placa, data, posto, caminho_comprovante))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect(url_for("index"))
+
+@app.route("/abastecimentoNutricaoHist", methods=["GET"])
+def listar_abastecimentosNutricao():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    conn = conectar_bd()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoNutricao")
+    abastecimentos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    return jsonify(abastecimentos)
+
+
+
+# SUPERVISAO #
+
+@app.route("/abastecimentoSupervisaoAut", methods=["POST"])
+def registrar_abastecimentoSupervisao():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    nome = request.form["nome"]
+    rgf = request.form["rgf"]
+    km = request.form["km"]
+    placa = request.form["placa"]
+    data = request.form["data"]
+    posto = request.form["posto"]
+
+    if "comprovante" not in request.files:
+        return "Erro: Nenhum arquivo enviado."
+    
+    file = request.files["comprovante"]
+    if file.filename == "":
+        return "Erro: Nome de arquivo inválido."
+
+    caminho_comprovante = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(caminho_comprovante)
+
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO abastecimentoSupervisao (nome, rgf, km, placa, data, posto, comprovante)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """, (nome, rgf, km, placa, data, posto, caminho_comprovante))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect(url_for("index"))
+
+@app.route("/abastecimentoSupervisaoHist", methods=["GET"])
+def listar_abastecimentosSupervisao():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    conn = conectar_bd()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoSupervisao")
+    abastecimentos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    return jsonify(abastecimentos)
+
+
+
+# VIGILANCIA #
+
+@app.route("/abastecimentoVigilanciaAut", methods=["POST"])
+def registrar_abastecimentoVigilancia():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    nome = request.form["nome"]
+    rgf = request.form["rgf"]
+    km = request.form["km"]
+    placa = request.form["placa"]
+    data = request.form["data"]
+    posto = request.form["posto"]
+
+    if "comprovante" not in request.files:
+        return "Erro: Nenhum arquivo enviado."
+    
+    file = request.files["comprovante"]
+    if file.filename == "":
+        return "Erro: Nome de arquivo inválido."
+
+    caminho_comprovante = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(caminho_comprovante)
+
+    conn = conectar_bd()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO abastecimentoVigilancia (nome, rgf, km, placa, data, posto, comprovante)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """, (nome, rgf, km, placa, data, posto, caminho_comprovante))
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return redirect(url_for("index"))
+
+@app.route("/abastecimentoVigilanciaHist", methods=["GET"])
+def listar_abastecimentosVigilancia():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+
+    conn = conectar_bd()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoVigilancia")
+    abastecimentos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    return jsonify(abastecimentos)
+
 if __name__ == "__main__":
     app.run(debug=True)

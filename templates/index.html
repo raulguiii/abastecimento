@@ -456,7 +456,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         COMUNICAÇÃO
                     </h3>                        
                     <p>Preencha após realizar o abastecimento</p>
-                    <form class="mt-3">
+                    <form class="mt-3" action="/abastecimentoComunAut" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome:</label>
                             <input type="text" class="form-control" id="nome" name="nome" required>
@@ -491,8 +491,53 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <!--COMUNICACAO HISTORICO-->    
             <div id="comunicacaoHist" class="tab-pane fade">
-                <h3>Todos abastecimentos realizados</h3>
-</div>
+                <h3>
+                    <img src="static/image/820508.png" alt="Ícone de COMUNICAÇÃO" style="width: 24px; height: 24px; margin-right: 8px;">
+                    COMUNICAÇÃO
+                </h3>
+                <p>Todos abastecimentos realizados em Março</p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>RGF</th>
+                            <th>KM</th>
+                            <th>Placa</th>
+                            <th>Data</th>
+                            <th>Posto</th>
+                            <th>Comprovante</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaAbastecimentosComunicacao">
+                        <!-- Os dados serão preenchidos dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch("/abastecimentoComunHist")
+                    .then(response => response.json())
+                    .then(data => {
+                        const tabela = document.getElementById("tabelaAbastecimentosComunicacao");
+                        data.forEach(abastecimento => {
+                            const row = `<tr>
+                                <td>${abastecimento.id}</td>
+                                <td>${abastecimento.nome}</td>
+                                <td>${abastecimento.rgf}</td>
+                                <td>${abastecimento.km}</td>
+                                <td>${abastecimento.placa}</td>
+                                <td>${abastecimento.data}</td>
+                                <td>${abastecimento.posto}</td>
+                                <td><a href="${abastecimento.comprovante}" target="_blank">Ver Comprovante</a></td>
+                            </tr>`;
+                            tabela.innerHTML += row;
+                        });
+                    })
+                    .catch(error => console.error("Erro ao carregar abastecimentos:", error));
+            });
+            </script>
                   
 
 
@@ -511,7 +556,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         DEE
                     </h3>                        
                     <p>Preencha após realizar o abastecimento</p>
-                    <form class="mt-3">
+                    <form class="mt-3" action="/abastecimentoDEEAut" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome:</label>
                             <input type="text" class="form-control" id="nome" name="nome" required>
@@ -546,9 +591,53 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <!--DEE HISTORICO-->    
             <div id="deeHist" class="tab-pane fade">
-                <h3>Todos abastecimentos realizados</h3>
-</div>
-
+                <h3>
+                    <img src="static/image/4914553.png" alt="Ícone de DEE" style="width: 24px; height: 24px; margin-right: 8px;">
+                    DEE
+                </h3>
+                <p>Todos abastecimentos realizados em Março</p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>RGF</th>
+                            <th>KM</th>
+                            <th>Placa</th>
+                            <th>Data</th>
+                            <th>Posto</th>
+                            <th>Comprovante</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaAbastecimentosDEE">
+                        <!-- Os dados serão preenchidos dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch("/abastecimentoDEEHist")
+                    .then(response => response.json())
+                    .then(data => {
+                        const tabela = document.getElementById("tabelaAbastecimentosDEE");
+                        data.forEach(abastecimento => {
+                            const row = `<tr>
+                                <td>${abastecimento.id}</td>
+                                <td>${abastecimento.nome}</td>
+                                <td>${abastecimento.rgf}</td>
+                                <td>${abastecimento.km}</td>
+                                <td>${abastecimento.placa}</td>
+                                <td>${abastecimento.data}</td>
+                                <td>${abastecimento.posto}</td>
+                                <td><a href="${abastecimento.comprovante}" target="_blank">Ver Comprovante</a></td>
+                            </tr>`;
+                            tabela.innerHTML += row;
+                        });
+                    })
+                    .catch(error => console.error("Erro ao carregar abastecimentos:", error));
+            });
+            </script>
 
 
         
@@ -566,7 +655,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     ENGENHARIA - MANUTENÇÃO
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
-                <form class="mt-3">
+                <form class="mt-3" action="/abastecimentoEng1Aut" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome:</label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
@@ -601,8 +690,53 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <!--ENGENHARIA MANUTENÇÃO HISTORICO-->
             <div id="engenhariaManHist" class="tab-pane fade">
-                <h3>Todos abastecimentos realizados</h3>
-    </div>
+                <h3>
+                    <img src="static/image/1077147.png" alt="Ícone de DEE" style="width: 24px; height: 24px; margin-right: 8px;">
+                    ENGENHARIA MANUTENÇÃO
+                </h3>
+                <p>Todos abastecimentos realizados em Março</p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>RGF</th>
+                            <th>KM</th>
+                            <th>Placa</th>
+                            <th>Data</th>
+                            <th>Posto</th>
+                            <th>Comprovante</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaAbastecimentosEng1">
+                        <!-- Os dados serão preenchidos dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch("/abastecimentoEng1Hist")
+                    .then(response => response.json())
+                    .then(data => {
+                        const tabela = document.getElementById("tabelaAbastecimentosEng1");
+                        data.forEach(abastecimento => {
+                            const row = `<tr>
+                                <td>${abastecimento.id}</td>
+                                <td>${abastecimento.nome}</td>
+                                <td>${abastecimento.rgf}</td>
+                                <td>${abastecimento.km}</td>
+                                <td>${abastecimento.placa}</td>
+                                <td>${abastecimento.data}</td>
+                                <td>${abastecimento.posto}</td>
+                                <td><a href="${abastecimento.comprovante}" target="_blank">Ver Comprovante</a></td>
+                            </tr>`;
+                            tabela.innerHTML += row;
+                        });
+                    })
+                    .catch(error => console.error("Erro ao carregar abastecimentos:", error));
+            });
+            </script>
 
 
 
@@ -621,7 +755,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     ENGENHARIA - PROJETOS
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
-                <form class="mt-3">
+                <form class="mt-3" action="/abastecimentoEng2Aut" method="POST" enctype="multipart/form-data">                    
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome:</label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
@@ -656,8 +790,53 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <!--ENGENHARIA PROJETOS HISTORICO-->
             <div id="engenhariaProjHist" class="tab-pane fade">
-                <h3>Todos abastecimentos realizados</h3>
-    </div>
+                <h3>
+                    <img src="static/image/4538996.png" alt="Ícone de DEE" style="width: 24px; height: 24px; margin-right: 8px;">
+                    ENGENHARIA PROJETOS
+                </h3>
+                <p>Todos abastecimentos realizados em Março</p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>RGF</th>
+                            <th>KM</th>
+                            <th>Placa</th>
+                            <th>Data</th>
+                            <th>Posto</th>
+                            <th>Comprovante</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaAbastecimentosEng2">
+                        <!-- Os dados serão preenchidos dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch("/abastecimentoEng2Hist")
+                    .then(response => response.json())
+                    .then(data => {
+                        const tabela = document.getElementById("tabelaAbastecimentosEng2");
+                        data.forEach(abastecimento => {
+                            const row = `<tr>
+                                <td>${abastecimento.id}</td>
+                                <td>${abastecimento.nome}</td>
+                                <td>${abastecimento.rgf}</td>
+                                <td>${abastecimento.km}</td>
+                                <td>${abastecimento.placa}</td>
+                                <td>${abastecimento.data}</td>
+                                <td>${abastecimento.posto}</td>
+                                <td><a href="${abastecimento.comprovante}" target="_blank">Ver Comprovante</a></td>
+                            </tr>`;
+                            tabela.innerHTML += row;
+                        });
+                    })
+                    .catch(error => console.error("Erro ao carregar abastecimentos:", error));
+            });
+            </script>
 
 
 
@@ -676,7 +855,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             GABINETE
                         </h3>                        
                         <p>Preencha após realizar o abastecimento</p>
-                        <form class="mt-3">
+                        <form class="mt-3" action="/abastecimentoGabineteAut" method="POST" enctype="multipart/form-data">        
                             <div class="mb-3">
                                 <label for="nome" class="form-label">Nome:</label>
                                 <input type="text" class="form-control" id="nome" name="nome" required>
@@ -711,8 +890,54 @@ document.addEventListener("DOMContentLoaded", function() {
     
                 <!--GABINETE HISTORICO-->    
                 <div id="gabineteHist" class="tab-pane fade">
-                    <h3>Todos abastecimentos realizados</h3>
-    </div>
+                    <h3>
+                        <img src="static/image/2541979.png" alt="Ícone de DEE" style="width: 24px; height: 24px; margin-right: 8px;">
+                        GABINETE 
+                    </h3>
+                    <p>Todos abastecimentos realizados em Março</p>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>RGF</th>
+                                <th>KM</th>
+                                <th>Placa</th>
+                                <th>Data</th>
+                                <th>Posto</th>
+                                <th>Comprovante</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaGABINETE">
+                            <!-- Os dados serão preenchidos dinamicamente -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    fetch("/abastecimentoGabineteHist")
+                        .then(response => response.json())
+                        .then(data => {
+                            const tabela = document.getElementById("tabelaGABINETE");
+                            data.forEach(abastecimento => {
+                                const row = `<tr>
+                                    <td>${abastecimento.id}</td>
+                                    <td>${abastecimento.nome}</td>
+                                    <td>${abastecimento.rgf}</td>
+                                    <td>${abastecimento.km}</td>
+                                    <td>${abastecimento.placa}</td>
+                                    <td>${abastecimento.data}</td>
+                                    <td>${abastecimento.posto}</td>
+                                    <td><a href="${abastecimento.comprovante}" target="_blank">Ver Comprovante</a></td>
+                                </tr>`;
+                                tabela.innerHTML += row;
+                            });
+                        })
+                        .catch(error => console.error("Erro ao carregar abastecimentos:", error));
+                });
+                </script>
+    
 
 
 
@@ -731,7 +956,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     INFORMÁTICA
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
-                <form class="mt-3">
+                <form class="mt-3" action="/abastecimentoInformaticaAut" method="POST" enctype="multipart/form-data"> 
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome:</label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
@@ -766,8 +991,53 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <!--INFORMATICA HISTORICO-->
             <div id="informaticaHist" class="tab-pane fade">
-                <h3>Todos abastecimentos realizados</h3>
-    </div>
+                <h3>
+                    <img src="static/image/78951.png" alt="Ícone de DEE" style="width: 24px; height: 24px; margin-right: 8px;">
+                    INFORMÁTICA 
+                </h3>
+                <p>Todos abastecimentos realizados em Março</p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>RGF</th>
+                            <th>KM</th>
+                            <th>Placa</th>
+                            <th>Data</th>
+                            <th>Posto</th>
+                            <th>Comprovante</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaINFORMATICA">
+                        <!-- Os dados serão preenchidos dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch("/abastecimentoInformaticaHist")
+                    .then(response => response.json())
+                    .then(data => {
+                        const tabela = document.getElementById("tabelaINFORMATICA");
+                        data.forEach(abastecimento => {
+                            const row = `<tr>
+                                <td>${abastecimento.id}</td>
+                                <td>${abastecimento.nome}</td>
+                                <td>${abastecimento.rgf}</td>
+                                <td>${abastecimento.km}</td>
+                                <td>${abastecimento.placa}</td>
+                                <td>${abastecimento.data}</td>
+                                <td>${abastecimento.posto}</td>
+                                <td><a href="${abastecimento.comprovante}" target="_blank">Ver Comprovante</a></td>
+                            </tr>`;
+                            tabela.innerHTML += row;
+                        });
+                    })
+                    .catch(error => console.error("Erro ao carregar abastecimentos:", error));
+            });
+            </script>
 
 
 
@@ -786,7 +1056,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     LOGÍSTICA
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
-                <form class="mt-3">
+                <form class="mt-3" action="/abastecimentoLogisticaAut" method="POST" enctype="multipart/form-data"> 
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome:</label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
@@ -821,8 +1091,54 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <!--LOGISTICA HISTORICO-->
             <div id="logisticaHist" class="tab-pane fade">
-                <h3>Todos abastecimentos realizados</h3>
-    </div>
+                <h3>
+                    <img src="static/image/4394181.png" alt="Ícone de DEE" style="width: 24px; height: 24px; margin-right: 8px;">
+                    LOGÍSTICA 
+                </h3>
+                <p>Todos abastecimentos realizados em Março</p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>RGF</th>
+                            <th>KM</th>
+                            <th>Placa</th>
+                            <th>Data</th>
+                            <th>Posto</th>
+                            <th>Comprovante</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaLOGÍSTICA">
+                        <!-- Os dados serão preenchidos dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch("/abastecimentoLogisticaHist")
+                    .then(response => response.json())
+                    .then(data => {
+                        const tabela = document.getElementById("tabelaLOGÍSTICA");
+                        data.forEach(abastecimento => {
+                            const row = `<tr>
+                                <td>${abastecimento.id}</td>
+                                <td>${abastecimento.nome}</td>
+                                <td>${abastecimento.rgf}</td>
+                                <td>${abastecimento.km}</td>
+                                <td>${abastecimento.placa}</td>
+                                <td>${abastecimento.data}</td>
+                                <td>${abastecimento.posto}</td>
+                                <td><a href="${abastecimento.comprovante}" target="_blank">Ver Comprovante</a></td>
+                            </tr>`;
+                            tabela.innerHTML += row;
+                        });
+                    })
+                    .catch(error => console.error("Erro ao carregar abastecimentos:", error));
+            });
+            </script>
+
 
 
 
@@ -841,7 +1157,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     NÚCLEO PEDAGÓGICO
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
-                <form class="mt-3">
+                <form class="mt-3" action="/abastecimentoNucleoAut" method="POST" enctype="multipart/form-data"> 
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome:</label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
@@ -876,8 +1192,53 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <!--NUCLEO HISTORICO-->
             <div id="nucleoHist" class="tab-pane fade">
-                <h3>Todos abastecimentos realizados</h3>
-    </div>
+                <h3>
+                    <img src="static/image/29302.png" alt="Ícone de nucleo" style="width: 24px; height: 24px; margin-right: 8px;">
+                    NÚCLEO 
+                </h3>
+                <p>Todos abastecimentos realizados em Março</p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>RGF</th>
+                            <th>KM</th>
+                            <th>Placa</th>
+                            <th>Data</th>
+                            <th>Posto</th>
+                            <th>Comprovante</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaNucleo">
+                        <!-- Os dados serão preenchidos dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch("/abastecimentoNucleoHist")
+                    .then(response => response.json())
+                    .then(data => {
+                        const tabela = document.getElementById("tabelaNucleo");
+                        data.forEach(abastecimento => {
+                            const row = `<tr>
+                                <td>${abastecimento.id}</td>
+                                <td>${abastecimento.nome}</td>
+                                <td>${abastecimento.rgf}</td>
+                                <td>${abastecimento.km}</td>
+                                <td>${abastecimento.placa}</td>
+                                <td>${abastecimento.data}</td>
+                                <td>${abastecimento.posto}</td>
+                                <td><a href="${abastecimento.comprovante}" target="_blank">Ver Comprovante</a></td>
+                            </tr>`;
+                            tabela.innerHTML += row;
+                        });
+                    })
+                    .catch(error => console.error("Erro ao carregar abastecimentos:", error));
+            });
+            </script>
 
             
       
@@ -896,7 +1257,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     NUTRIÇÃO
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
-                <form class="mt-3">
+                <form class="mt-3" action="/abastecimentoNutricaoAut" method="POST" enctype="multipart/form-data"> 
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome:</label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
@@ -931,9 +1292,53 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <!--NUTRIÇÃO HISTORICO-->
             <div id="nutricaoHist" class="tab-pane fade">
-                <h3>Todos abastecimentos realizados</h3>
-    </div>
-
+                <h3>
+                    <img src="static/image/649371.png" alt="Ícone de NUTRIÇÃO" style="width: 24px; height: 24px; margin-right: 8px;">
+                    NUTRIÇÃO
+                </h3>
+                <p>Todos abastecimentos realizados em Março</p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>RGF</th>
+                            <th>KM</th>
+                            <th>Placa</th>
+                            <th>Data</th>
+                            <th>Posto</th>
+                            <th>Comprovante</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaNutricao">
+                        <!-- Os dados serão preenchidos dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch("/abastecimentoNutricaoHist")
+                    .then(response => response.json())
+                    .then(data => {
+                        const tabela = document.getElementById("tabelaNutricao");
+                        data.forEach(abastecimento => {
+                            const row = `<tr>
+                                <td>${abastecimento.id}</td>
+                                <td>${abastecimento.nome}</td>
+                                <td>${abastecimento.rgf}</td>
+                                <td>${abastecimento.km}</td>
+                                <td>${abastecimento.placa}</td>
+                                <td>${abastecimento.data}</td>
+                                <td>${abastecimento.posto}</td>
+                                <td><a href="${abastecimento.comprovante}" target="_blank">Ver Comprovante</a></td>
+                            </tr>`;
+                            tabela.innerHTML += row;
+                        });
+                    })
+                    .catch(error => console.error("Erro ao carregar abastecimentos:", error));
+            });
+            </script>
 
 
 
@@ -951,7 +1356,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     SUPERVISÃO
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
-                <form class="mt-3">
+                <form class="mt-3" action="/abastecimentoSupervisaoAut" method="POST" enctype="multipart/form-data"> 
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome:</label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
@@ -986,8 +1391,53 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <!--SUPERVISAO HISTORICO-->
             <div id="supervisaoHist" class="tab-pane fade">
-                <h3>Todos abastecimentos realizados</h3>
-    </div>
+                <h3>
+                    <img src="static/image/65000.png" alt="Ícone de SUPERVISAO" style="width: 24px; height: 24px; margin-right: 8px;">
+                    SUPERVISÃO
+                </h3>
+                <p>Todos abastecimentos realizados em Março</p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>RGF</th>
+                            <th>KM</th>
+                            <th>Placa</th>
+                            <th>Data</th>
+                            <th>Posto</th>
+                            <th>Comprovante</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaSupervisao">
+                        <!-- Os dados serão preenchidos dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch("/abastecimentoSupervisaoHist")
+                    .then(response => response.json())
+                    .then(data => {
+                        const tabela = document.getElementById("tabelaSupervisao");
+                        data.forEach(abastecimento => {
+                            const row = `<tr>
+                                <td>${abastecimento.id}</td>
+                                <td>${abastecimento.nome}</td>
+                                <td>${abastecimento.rgf}</td>
+                                <td>${abastecimento.km}</td>
+                                <td>${abastecimento.placa}</td>
+                                <td>${abastecimento.data}</td>
+                                <td>${abastecimento.posto}</td>
+                                <td><a href="${abastecimento.comprovante}" target="_blank">Ver Comprovante</a></td>
+                            </tr>`;
+                            tabela.innerHTML += row;
+                        });
+                    })
+                    .catch(error => console.error("Erro ao carregar abastecimentos:", error));
+            });
+            </script>
 
 
 
@@ -1006,7 +1456,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     VIGILÂNCIA
                 </h3>                        
                 <p>Preencha após realizar o abastecimento</p>
-                <form class="mt-3">
+                <form class="mt-3" action="/abastecimentoVigilanciaAut" method="POST" enctype="multipart/form-data"> 
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome:</label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
@@ -1039,10 +1489,55 @@ document.addEventListener("DOMContentLoaded", function() {
                 </form>
     </div>
 
-            <!--SUPERVISAO HISTORICO-->
+            <!--VIGILANCIA HISTORICO-->
             <div id="vigilanciaHist" class="tab-pane fade">
-                <h3>Todos abastecimentos realizados</h3>
-    </div>
+                <h3>
+                    <img src="static/image/139787.png" alt="Ícone de VIGILANCIA" style="width: 24px; height: 24px; margin-right: 8px;">
+                    VIGILÂNCIA
+                </h3>
+                <p>Todos abastecimentos realizados em Março</p>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>RGF</th>
+                            <th>KM</th>
+                            <th>Placa</th>
+                            <th>Data</th>
+                            <th>Posto</th>
+                            <th>Comprovante</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaVigilancia">
+                        <!-- Os dados serão preenchidos dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch("/abastecimentoVigilanciaHist")
+                    .then(response => response.json())
+                    .then(data => {
+                        const tabela = document.getElementById("tabelaVigilancia");
+                        data.forEach(abastecimento => {
+                            const row = `<tr>
+                                <td>${abastecimento.id}</td>
+                                <td>${abastecimento.nome}</td>
+                                <td>${abastecimento.rgf}</td>
+                                <td>${abastecimento.km}</td>
+                                <td>${abastecimento.placa}</td>
+                                <td>${abastecimento.data}</td>
+                                <td>${abastecimento.posto}</td>
+                                <td><a href="${abastecimento.comprovante}" target="_blank">Ver Comprovante</a></td>
+                            </tr>`;
+                            tabela.innerHTML += row;
+                        });
+                    })
+                    .catch(error => console.error("Erro ao carregar abastecimentos:", error));
+            });
+            </script>
 
 
 
