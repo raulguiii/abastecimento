@@ -119,7 +119,12 @@ def listar_abastecimentosAlmox():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoAlmox"
+    # Alteração para filtrar registros apenas de março (mês 3)
+    query = """
+        SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
+        FROM abastecimentoAlmox 
+        WHERE MONTH(data) = 3
+    """
     abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
@@ -170,7 +175,11 @@ def listar_abastecimentosCasaDeProjetos():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoCasaDeProjetos"
+    query = """
+        SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
+        FROM abastecimentoCasaDeProjetos 
+        WHERE MONTH(data) = 3
+    """
     abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
@@ -219,7 +228,11 @@ def listar_abastecimentosComunicacao():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoComunicacao"
+    query = """
+        SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
+        FROM abastecimentoComunicacao 
+        WHERE MONTH(data) = 3
+    """
     abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
@@ -270,7 +283,11 @@ def listar_abastecimentosDEE():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoDEE"
+    query = """
+        SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
+        FROM abastecimentoDEE 
+        WHERE MONTH(data) = 3
+    """
     abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
@@ -320,7 +337,11 @@ def listar_abastecimentosEng1():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoEng1"
+    query = """
+        SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
+        FROM abastecimentoEng1 
+        WHERE MONTH(data) = 3
+    """
     abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
@@ -370,7 +391,11 @@ def listar_abastecimentosEng2():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoEng2"
+    query = """
+        SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
+        FROM abastecimentoEng2 
+        WHERE MONTH(data) = 3
+    """
     abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
@@ -420,7 +445,11 @@ def listar_abastecimentosGabinete():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoGabinete"
+    query = """
+        SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
+        FROM abastecimentoGabinete 
+        WHERE MONTH(data) = 3
+    """
     abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
@@ -469,7 +498,11 @@ def listar_abastecimentosInformatica():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoInformatica"
+    query = """
+        SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
+        FROM abastecimentoInformatica 
+        WHERE MONTH(data) = 3
+    """
     abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
@@ -519,11 +552,14 @@ def listar_abastecimentosLogistica():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoLogistica"
+    query = """
+        SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
+        FROM abastecimentoLogistica 
+        WHERE MONTH(data) = 3
+    """
     abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
-
 
 # Núcleo #
 
@@ -568,7 +604,11 @@ def listar_abastecimentosNucleo():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoNucleo"
+    query = """
+        SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
+        FROM abastecimentoNucleo 
+        WHERE MONTH(data) = 3
+    """
     abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
@@ -617,7 +657,11 @@ def listar_abastecimentosNutricao():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoNutricao"
+    query = """
+        SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
+        FROM abastecimentoNutricao 
+        WHERE MONTH(data) = 3
+    """
     abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
@@ -666,7 +710,11 @@ def listar_abastecimentosSupervisao():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoSupervisao"
+    query = """
+        SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
+        FROM abastecimentoSupervisao 
+        WHERE MONTH(data) = 3
+    """
     abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
@@ -715,7 +763,11 @@ def listar_abastecimentosVigilancia():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    query = "SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante FROM abastecimentoVigilancia"
+    query = """
+        SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
+        FROM abastecimentoVigilancia 
+        WHERE MONTH(data) = 3
+    """
     abastecimentos = executar_consulta(query, fetch=True)
 
     return jsonify(abastecimentos)
