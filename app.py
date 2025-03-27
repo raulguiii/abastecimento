@@ -52,12 +52,6 @@ def index():
     return render_template("index.html", departamento_usuario=departamento_usuario)
 
 
-@app.route("/comprovantes")
-def comprovantes():
-    if "usuario" not in session:
-        return redirect(url_for("login"))
-    return render_template("comprovantes.html")
-
 @app.route("/login", methods=["POST"])
 def do_login():
     nome_completo = request.form["nome_completo"]

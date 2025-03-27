@@ -72,7 +72,7 @@ CREATE TABLE abastecimentoComunicacao (
 );
 
 
--- Tabela Comunicação
+-- Tabela DEE
 Select * from abastecimentoDEE;
 CREATE TABLE abastecimentoDEE ( 
 	id INT AUTO_INCREMENT PRIMARY KEY, 
