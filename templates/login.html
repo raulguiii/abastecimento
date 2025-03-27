@@ -8,8 +8,7 @@
     <title>Login - Abastecimento</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='image/logopref.png') }}">
-
-<!-- FontAwesome CDN para o ícone de olho -->
+    <!-- FontAwesome CDN para o ícone de olho -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
@@ -43,9 +42,11 @@
                             <input type="text" name="nome_completo" class="form-control form-control-lg bg-light fs-6" placeholder="Nome Completo" required>
                         </div>
 
+                        <!-- Contêiner para o campo de senha e ícone -->
                         <div class="input-group mb-1 position-relative">
                             <input type="password" id="senha" name="senha" class="form-control form-control-lg bg-light fs-6" placeholder="Senha" required>
-                            <button type="button" id="toggle-password" class="btn btn-link position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%);">
+                            <!-- Ícone de olho -->
+                            <button type="button" id="toggle-password" class="btn btn-link position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%); z-index: 2;">
                                 <i class="fa-solid fa-eye"></i>
                             </button>
                         </div>
