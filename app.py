@@ -3,14 +3,15 @@ import mysql.connector
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "chave_secreta_fallback")  # fallback opcional
+app.secret_key = os.environ.get("SECRET_KEY", "chave_secreta_fallback")
 
-# Configuração do banco de dados com variáveis de ambiente
+# Configuração do banco de dados com variáveis de ambiente do Railway
 db_config = {
-    "host": os.environ.get("DB_HOST"),
-    "user": os.environ.get("DB_USER"),
-    "password": os.environ.get("DB_PASSWORD"),
-    "database": os.environ.get("DB_NAME")
+    "host": os.environ.get("MYSQLHOST"),
+    "user": os.environ.get("MYSQLUSER"),
+    "password": os.environ.get("MYSQLPASSWORD"),
+    "database": os.environ.get("MYSQLDATABASE"),
+    "port": int(os.environ.get("MYSQLPORT", 3306))
 }
 
 def executar_consulta(query, params=None, fetch=False):
@@ -771,5 +772,6 @@ def listar_abastecimentosVigilancia():
 
     return jsonify(abastecimentos)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))  # Usa a porta passada pelo Railway
+    app.run(host='0.0.0.0', port=port)
