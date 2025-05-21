@@ -46,10 +46,13 @@ def index():
     if "usuario" not in session:
         return redirect(url_for("login"))
 
-    # Pegue os dados do usuário logado, por exemplo, o departamento
-    departamento_usuario = session.get("departamento")  # Supondo que o departamento está armazenado na sessão
-    
-    return render_template("index.html", departamento_usuario=departamento_usuario)
+    departamento_usuario = session.get("departamento")
+    cargo_usuario = session.get("cargo")  # ✅ Pegando cargo da sessão
+
+    return render_template("index.html", 
+                           departamento_usuario=departamento_usuario, 
+                           cargo_usuario=cargo_usuario)  # ✅ Passando para o template
+
 
 
 @app.route("/login", methods=["POST"])
@@ -62,7 +65,8 @@ def do_login():
 
     if usuario:
         session["usuario"] = usuario[0]["nome_completo"]
-        session["departamento"] = usuario[0]["departamento"]  # Armazena o cargo
+        session["departamento"] = usuario[0]["departamento"]
+        session["cargo"] = usuario[0]["cargo"]  # ✅ Armazena o cargo também
         return redirect(url_for("index"))
     else:
         return render_template("login.html", error_message="Credenciais inválidas.")
