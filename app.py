@@ -7,10 +7,10 @@ app.secret_key = "chave_secreta"  # Para gerenciar sessões
 
 # Configuração do banco de dados
 db_config = {
-    "host": "localhost",
-    "user": "root",
-    "password": "raulgui123!",
-    "database": "db_abastecimento_semecti"
+    "host": os.environ.get("MYSQLHOST", "localhost"),
+    "user": os.environ.get("MYSQLUSER", "root"),
+    "password": os.environ.get("MYSQLPASSWORD", ""),
+    "database": os.environ.get("MYSQLDATABASE", "")
 }
 
 def executar_consulta(query, params=None, fetch=False):
@@ -772,4 +772,5 @@ def listar_abastecimentosVigilancia():
     return jsonify(abastecimentos)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True, host="0.0.0.0", port=port)
