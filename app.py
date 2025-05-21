@@ -122,7 +122,7 @@ def listar_abastecimentosAlmox():
     query = """
         SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
         FROM abastecimentoAlmox 
-        WHERE MONTH(data) = 4
+        WHERE MONTH(data) = 5
     """
     abastecimentos = executar_consulta(query, fetch=True)
 
@@ -177,7 +177,7 @@ def listar_abastecimentosCasaDeProjetos():
     query = """
         SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
         FROM abastecimentoCasaDeProjetos 
-        WHERE MONTH(data) = 4
+        WHERE MONTH(data) = 5
     """
     abastecimentos = executar_consulta(query, fetch=True)
 
@@ -230,7 +230,7 @@ def listar_abastecimentosComunicacao():
     query = """
         SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
         FROM abastecimentoComunicacao 
-        WHERE MONTH(data) = 4
+        WHERE MONTH(data) = 5
     """
     abastecimentos = executar_consulta(query, fetch=True)
 
@@ -285,7 +285,7 @@ def listar_abastecimentosDEE():
     query = """
         SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
         FROM abastecimentoDEE 
-        WHERE MONTH(data) = 4
+        WHERE MONTH(data) = 5
     """
     abastecimentos = executar_consulta(query, fetch=True)
 
@@ -339,7 +339,7 @@ def listar_abastecimentosEng1():
     query = """
         SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
         FROM abastecimentoEng1 
-        WHERE MONTH(data) = 4
+        WHERE MONTH(data) = 5
     """
     abastecimentos = executar_consulta(query, fetch=True)
 
@@ -393,7 +393,7 @@ def listar_abastecimentosEng2():
     query = """
         SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
         FROM abastecimentoEng2 
-        WHERE MONTH(data) = 4
+        WHERE MONTH(data) = 5
     """
     abastecimentos = executar_consulta(query, fetch=True)
 
@@ -447,7 +447,7 @@ def listar_abastecimentosGabinete():
     query = """
         SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
         FROM abastecimentoGabinete 
-        WHERE MONTH(data) = 4
+        WHERE MONTH(data) = 5
     """
     abastecimentos = executar_consulta(query, fetch=True)
 
@@ -500,7 +500,7 @@ def listar_abastecimentosInformatica():
     query = """
         SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
         FROM abastecimentoInformatica 
-        WHERE MONTH(data) = 4
+        WHERE MONTH(data) = 5
     """
     abastecimentos = executar_consulta(query, fetch=True)
 
@@ -554,7 +554,7 @@ def listar_abastecimentosLogistica():
     query = """
         SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
         FROM abastecimentoLogistica 
-        WHERE MONTH(data) = 4
+        WHERE MONTH(data) = 5
     """
     abastecimentos = executar_consulta(query, fetch=True)
 
@@ -606,7 +606,7 @@ def listar_abastecimentosNucleo():
     query = """
         SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
         FROM abastecimentoNucleo 
-        WHERE MONTH(data) = 4
+        WHERE MONTH(data) = 5
     """
     abastecimentos = executar_consulta(query, fetch=True)
 
@@ -659,7 +659,7 @@ def listar_abastecimentosNutricao():
     query = """
         SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
         FROM abastecimentoNutricao 
-        WHERE MONTH(data) = 4
+        WHERE MONTH(data) = 5
     """
     abastecimentos = executar_consulta(query, fetch=True)
 
@@ -712,7 +712,7 @@ def listar_abastecimentosSupervisao():
     query = """
         SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
         FROM abastecimentoSupervisao 
-        WHERE MONTH(data) = 4
+        WHERE MONTH(data) = 5
     """
     abastecimentos = executar_consulta(query, fetch=True)
 
@@ -765,7 +765,7 @@ def listar_abastecimentosVigilancia():
     query = """
         SELECT id, nome, rgf, km, placa, DATE_FORMAT(data, '%d/%m/%Y') AS data, posto, comprovante 
         FROM abastecimentoVigilancia 
-        WHERE MONTH(data) = 4
+        WHERE MONTH(data) = 5
     """
     abastecimentos = executar_consulta(query, fetch=True)
 
