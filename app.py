@@ -7,10 +7,10 @@ app.secret_key = "chave_secreta"  # Para gerenciar sessões
 
 # Configuração do banco de dados
 db_config = {
-    "host": "localhost",
+    "host": "mysql.railway.internal",
     "user": "root",
-    "password": "raulgui123!",
-    "database": "db_abastecimento_semecti"
+    "password": "PuMlhIsdjNdsqeTWalteuWnjhbYhVVzG",
+    "database": "railway"
 }
 
 def executar_consulta(query, params=None, fetch=False):
