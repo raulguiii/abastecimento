@@ -3,14 +3,14 @@ import mysql.connector
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 
 app = Flask(__name__)
-app.secret_key = "chave_secreta"  # Para gerenciar sessões
+app.secret_key = os.environ.get("SECRET_KEY", "chave_secreta_fallback")  # fallback opcional
 
-# Configuração do banco de dados
+# Configuração do banco de dados com variáveis de ambiente
 db_config = {
-    "host": "mysql.railway.internal",
-    "user": "root",
-    "password": "PuMlhIsdjNdsqeTWalteuWnjhbYhVVzG",
-    "database": "railway"
+    "host": os.environ.get("DB_HOST"),
+    "user": os.environ.get("DB_USER"),
+    "password": os.environ.get("DB_PASSWORD"),
+    "database": os.environ.get("DB_NAME")
 }
 
 def executar_consulta(query, params=None, fetch=False):
