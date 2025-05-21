@@ -7,10 +7,10 @@ app.secret_key = "chave_secreta"  # Para gerenciar sessões
 
 # Configuração do banco de dados
 db_config = {
-    "host": "mysql.railway.internal",
+    "host": "localhost",
     "user": "root",
-    "password": "PuMlhIsdjNdsqeTWalteuWnjhbYhVVzG",
-    "database": "railway"
+    "password": "raulgui123!",
+    "database": "db_abastecimento_semecti"
 }
 
 def executar_consulta(query, params=None, fetch=False):
@@ -771,3 +771,5 @@ def listar_abastecimentosVigilancia():
 
     return jsonify(abastecimentos)
 
+if __name__ == "__main__":
+    app.run(debug=True)
