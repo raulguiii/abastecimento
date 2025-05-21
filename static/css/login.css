@@ -33,24 +33,54 @@ body{
 
 /*------------ For small screens------------*/
 
-@media only screen and (max-width: 768px){
-
-     .box-area{
-        margin: 0 10px;
-
-     }
-     .left-box{
-        height: 100px;
-        overflow: hidden;
-     }
-     .right-box{
-        padding: 20px;
-     }
-
+/* Tornar a imagem responsiva */
+.left-box .featured-image img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    object-fit: contain;
 }
 
-.alert-sm {
-    font-size: 0.875rem; /* Ajusta o tamanho da fonte */
-    padding: 0.5rem 1rem; /* Ajusta o padding para deixar o alerta mais compacto */
+/* Ajustar a div da esquerda em telas menores */
+@media (max-width: 768px) {
+    .left-box {
+        padding: 20px 0;
+    }
+
+    .left-box .featured-image img {
+        max-width: 180px;
+    }
+
+    .left-box p {
+        font-size: 1.5rem;
+    }
+
+    .left-box small {
+        width: 100%;
+        padding: 0 10px;
+    }
+}
+
+/* Melhorando ainda mais para telas muito pequenas */
+@media (max-width: 576px) {
+    .box-area {
+        flex-direction: column;
+    }
+
+    .left-box, .right-box {
+        width: 100%;
+    }
+
+    .left-box {
+        border-radius: 20px 20px 0 0;
+    }
+
+    .right-box {
+        border-radius: 0 0 20px 20px;
+    }
+
+    .left-box .featured-image img {
+        max-width: 160px;
+    }
 }
 
