@@ -13,6 +13,8 @@ db_config = {
     "database": os.environ.get("MYSQLDATABASE", "")
 }
 
+connection = mysql.connector.connect(**db_config)
+
 def executar_consulta(query, params=None, fetch=False):
     conn = conectar_bd()
     cursor = conn.cursor(dictionary=True)
